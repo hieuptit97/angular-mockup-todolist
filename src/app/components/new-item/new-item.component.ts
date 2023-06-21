@@ -26,7 +26,6 @@ export class NewItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('mode + Item info ', this.mode, this.initItemInfo)
     this.rfItem.patchValue({
       title: this.initItemInfo?.title,
       description: this.initItemInfo?.description,
@@ -41,6 +40,7 @@ export class NewItemComponent implements OnInit {
     } else {
       const newObj = {...this.rfItem.value, dueDate: new Date(this.rfItem.value.dueDate)};
       this.ItemService.addItem(newObj);
+      this.rfItem.reset()
     }
   }
 

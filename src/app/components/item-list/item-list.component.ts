@@ -44,9 +44,8 @@ export class ItemListComponent implements OnInit {
   }
 
   removeItem(index: number) {
-    console.log("removeItem", index)
     this.ItemService.deleteItem(index);
-    this.dataArr = this.ItemService.getAllItem();
+    this.reloadData()
   }
 
   removeBulkItem() {
