@@ -1,0 +1,45 @@
+<div class="content">
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      <app-new-item></app-new-item>
+    </div>
+    <div class="col-12 col-sm-6">
+      <div class="row col-10 justify-content-md-center offset-1">
+        <h4 class="d-inline-block">LIST ITEMS</h4>
+      </div>
+      <div class="row col-10 justify-content-md-center offset-1">
+        <div class="card shadow p-0">
+          <h5 class="card-header">My Todo List</h5>
+          <div class="card-body">
+            <div class="list-group" *ngFor="let item of dataArr; let i = index;">
+              <div class="item">
+                <div class="w-50 d-inline-block">
+                  <input type="checkbox" class="form-check-input mr-5" id="complete" (change)="checkItem(i)">
+                  <label for="complete" class="form-check-label lead">{{item.title}}</label>
+                </div>
+                <div class="w-50 d-inline-block" style="text-align: right">
+                  <button class="btn btn-info" type="submit" (click)="detailItem(item, i)">Detail
+                  </button>
+                  <button class="btn btn-danger" type="submit" (click)="removeItem(i)">Remove
+                  </button>
+                </div>
+              </div>
+              <div class="item-detail" *ngIf="detailItemArr[i] == true">
+                <app-new-item [mode]="'edit'" [initItemInfo]="item"></app-new-item>
+              </div>
+            </div>
+            <div class="item-bulk" *ngIf="bulkItemArr.length != 0">
+              <div class="w-100 d-block" style="text-align: right">
+                <button class="btn btn-secondary" type="submit">Done
+                </button>
+                <button class="btn btn-danger" type="submit" (click)="removeBulkItem()">Remove
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

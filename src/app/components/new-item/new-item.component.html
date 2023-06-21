@@ -1,0 +1,61 @@
+<div class="content col-10 justify-content-md-center offset-1">
+  <div class="row">
+    <h4 class="d-inline-block" *ngIf="mode=='add'">NEW ITEM</h4>
+    <h4 class="d-inline-block" *ngIf="mode=='edit'">EDIT ITEM</h4>
+  </div>
+  <div class="row">
+    <form novalidate [formGroup]="rfItem">
+      <div class="col-md-8">
+        <div class="form-group row">
+          <div class="col-12">
+            <input class="form-control" type="text"
+                   id="title-field" placeholder="Input title" formControlName="title">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <label for="description-field" class="col-12 col-form-label">
+              Description:
+            </label>
+          </div>
+          <div class="row">
+            <div class="col-12">
+            <textarea class="form-control" rows="3"
+                      id="description-field" formControlName="description"></textarea>
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <label for="due-date-field" class="col-6 col-form-label">
+              Due Date:
+            </label>
+            <input class="col-6" type="date" [min]="todayDate" id="due-date-field" name="due-date"
+                   formControlName="dueDate">
+          </div>
+          <div class="col-sm-6">
+            <label for="priority-field" class="col-6 col-form-label">
+              Priority
+            </label>
+            <select class="col-6 form-select-sm" id="priority-field" formControlName="priority">
+              <option value="Low">Low</option>
+              <option value="Normal">Normal</option>
+              <option value="High">High</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="form-group row">
+          <div class="col-12">
+            <button class="btn btn-success btn-block w-100" type="submit" *ngIf="mode=='add'" (click)="onSubmit()">Add
+            </button>
+            <button class="btn btn-info btn-block w-100" *ngIf="mode=='edit'" (click)="editItem()">Edit
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
+
