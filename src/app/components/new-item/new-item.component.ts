@@ -12,7 +12,7 @@ import {EventEmitter} from '@angular/core';
 export class NewItemComponent implements OnInit {
   @Input() mode? = 'add';
   @Input() initItemInfo?: Item;
-  // @Output() eventReloadData: EventEmitter<any>;
+  @Output() eventReloadData: EventEmitter<any> = new EventEmitter();
   rfItem!: FormGroup;
   todayDate = new Date().toISOString().slice(0, 10);
 
@@ -47,7 +47,8 @@ export class NewItemComponent implements OnInit {
   editItem() {
     if (this.initItemInfo != undefined) {
       this.ItemService.editItem(this.rfItem.value);
-      // this.eventReloadData.emit()
+      this.eventReloadData.emit('reload parent comp');
+      alert("Edit item successfully");
     }
   }
 

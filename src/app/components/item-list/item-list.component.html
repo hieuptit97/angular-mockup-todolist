@@ -25,7 +25,7 @@
                 </div>
               </div>
               <div class="item-detail" *ngIf="detailItemArr[i] == true">
-                <app-new-item [mode]="'edit'" [initItemInfo]="item"></app-new-item>
+                <app-new-item [mode]="'edit'" [initItemInfo]="item" (eventReloadData)="handleAfterEditItem($event)"></app-new-item>
               </div>
             </div>
             <div class="item-bulk" *ngIf="bulkItemArr.length != 0">

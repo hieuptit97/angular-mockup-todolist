@@ -56,7 +56,9 @@ export class ItemListComponent implements OnInit {
     }
     localStorage.setItem('todoListArr', JSON.stringify(arrItem));
     this.reloadData();
-
   }
 
+  handleAfterEditItem(event: any){
+    this.detailItemArr = [];
+  }
 }
